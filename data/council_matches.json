@@ -1,0 +1,6 @@
+{
+  "_about": "Manual links between state bills and City Council dockets, for pairs the title matcher can't make or gets wrong. Key: '<General Court>/<bill number>'. Value: the council docket ('YYYY-NNNN'), or null to say the bill has no council docket. Entries here override automatic matching.",
+  "_194/H4924": "Council 2025-0145 'To establish the Commission of Inspectors General on Financial Oversight' was passed in a new draft on 2025-10-29; the House and Senate bills filed in Jan-Feb 2026 carry it as the Boston Inspector General Oversight Commission.",
+  "194/H4924": "2025-0145",
+  "194/S2956": "2025-0145"
+}

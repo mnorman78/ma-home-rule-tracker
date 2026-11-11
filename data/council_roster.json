@@ -1,0 +1,33 @@
+{
+  "_about": "Boston City Council membership, used to work out the unnamed side of a roll call (the minutes name only the smaller side). Legistar's own membership records are incomplete, so this list was built from the councilors named in the City Clerk's minutes. Dates marked approximate are bracketed by the last and first minutes a councilor appears in. A vote is only inferred when this roster, the meeting's attendance line and the tally all agree exactly, so a wrong date here produces a partial record, not a wrong one. `surnames` are the spellings used in the minutes.",
+  "members": [
+    {"name": "Michael Flaherty",        "surnames": ["Flaherty"],                      "seat": "At-Large",   "start": "2020-01-06", "end": "2024-01-01"},
+    {"name": "Julia Mejia",             "surnames": ["Mejia"],                         "seat": "At-Large",   "start": "2020-01-06", "end": null},
+    {"name": "Annissa Essaibi George",  "surnames": ["Essaibi George", "Essaibi-George"], "seat": "At-Large", "start": "2020-01-06", "end": "2022-01-03"},
+    {"name": "Michelle Wu",             "surnames": ["Wu"],                            "seat": "At-Large",   "start": "2020-01-06", "end": "2021-11-16"},
+    {"name": "Lydia Edwards",           "surnames": ["Edwards"],                       "seat": "District 1", "start": "2020-01-06", "end": "2022-04-30"},
+    {"name": "Ed Flynn",                "surnames": ["Flynn"],                         "seat": "District 2", "start": "2020-01-06", "end": null},
+    {"name": "Frank Baker",             "surnames": ["Baker"],                         "seat": "District 3", "start": "2020-01-06", "end": "2024-01-01"},
+    {"name": "Andrea Joy Campbell",     "surnames": ["Campbell"],                      "seat": "District 4", "start": "2020-01-06", "end": "2022-01-03"},
+    {"name": "Ricardo Arroyo",          "surnames": ["Arroyo"],                        "seat": "District 5", "start": "2020-01-06", "end": "2024-01-01"},
+    {"name": "Matt O'Malley",           "surnames": ["O'Malley", "O’Malley"],          "seat": "District 6", "start": "2020-01-06", "end": "2022-01-03"},
+    {"name": "Kim Janey",               "surnames": ["Janey"],                         "seat": "District 7", "start": "2020-01-06", "end": "2022-01-03"},
+    {"name": "Kenzie Bok",              "surnames": ["Bok"],                           "seat": "District 8", "start": "2020-01-06", "end": "2023-05-01", "approximate_end": true},
+    {"name": "Liz Breadon",             "surnames": ["Breadon"],                       "seat": "District 9", "start": "2020-01-06", "end": null},
+
+    {"name": "Ruthzee Louijeune",       "surnames": ["Louijeune", "Louijuene"],        "seat": "At-Large",   "start": "2022-01-03", "end": null},
+    {"name": "Erin Murphy",             "surnames": ["Murphy"],                        "seat": "At-Large",   "start": "2022-01-03", "end": null},
+    {"name": "Gabriela Coletta Zapata", "surnames": ["Coletta Zapata", "Coletta"],     "seat": "District 1", "start": "2022-05-18", "end": null},
+    {"name": "Brian Worrell",           "surnames": ["Worrell"],                       "seat": "District 4", "start": "2022-01-03", "end": null},
+    {"name": "Kendra Lara",             "surnames": ["Lara"],                          "seat": "District 6", "start": "2022-01-03", "end": "2024-01-01"},
+    {"name": "Tania Fernandes Anderson","surnames": ["Fernandes Anderson", "Fernandez Anderson"], "seat": "District 7", "start": "2022-01-03", "end": "2025-07-01", "approximate_end": true},
+    {"name": "Sharon Durkan",           "surnames": ["Durkan"],                        "seat": "District 8", "start": "2023-08-10", "end": null},
+
+    {"name": "Henry Santana",           "surnames": ["Santana"],                       "seat": "At-Large",   "start": "2024-01-01", "end": null},
+    {"name": "John FitzGerald",         "surnames": ["FitzGerald", "Fitzgerald"],      "seat": "District 3", "start": "2024-01-01", "end": null},
+    {"name": "Enrique Pepén",           "surnames": ["Pepén", "Pepen"],                "seat": "District 5", "start": "2024-01-01", "end": null},
+    {"name": "Benjamin Weber",          "surnames": ["Weber"],                         "seat": "District 6", "start": "2024-01-01", "end": null},
+
+    {"name": "Miniard Culpepper",       "surnames": ["Culpepper"],                     "seat": "District 7", "start": "2026-01-05", "end": null}
+  ]
+}

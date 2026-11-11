@@ -1,0 +1,72 @@
+name: Daily update
+
+# Checks the Legislature and the City Council for new home rule petitions and
+# changes to existing ones, records what changed, and republishes the site.
+
+on:
+  schedule:
+    - cron: "0 11 * * *" # every day, 6-7 AM in Boston
+  workflow_dispatch:
+
+permissions:
+  contents: write # commit newly generated summaries back to the repo
+  pages: write
+  id-token: write
+
+concurrency:
+  group: tracker
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+
+      # Closed sessions never change, so cached API responses make daily runs take minutes, not half an hour.
+      - name: Restore API cache
+        uses: actions/cache@v4
+        with:
+          path: cache
+          key: api-cache-${{ github.run_id }}
+          restore-keys: api-cache-
+
+      - name: Download the last published data
+        run: |
+          mkdir -p output
+          site="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+          curl -fsSL "$site/boston.json" -o output/boston.json || rm -f output/boston.json
+          curl -fsSL "$site/changelog.json" -o output/changelog.json || rm -f output/changelog.json
+
+      - run: uv sync --frozen
+
+      - name: Run tracker
+        run: uv run tracker.py
+        env:
+          # Optional: without this secret, summaries fall back to the Legislature's descriptions.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Save new summaries
+        run: |
+          if [ -f data/summaries.json ] && [ -n "$(git status --porcelain data/summaries.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/summaries.json
+            git commit -m "Update petition summaries"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: output
+
+      - id: deploy
+        uses: actions/deploy-pages@v4

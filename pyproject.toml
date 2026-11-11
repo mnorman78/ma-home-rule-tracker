@@ -1,0 +1,10 @@
+[project]
+name = "ma-home-rule-tracker"
+version = "0.2.0"
+description = "Track Boston's home rule petitions through the Massachusetts Legislature"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic>=1.0",
+    "pypdf>=7.0.1",
+]

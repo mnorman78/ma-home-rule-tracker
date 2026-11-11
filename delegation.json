@@ -1,0 +1,25 @@
+{
+  "_about": "Which legislative districts include part of Boston. A district counts if its name contains one of `include_if_name_contains` and isn't listed in `exclude`. Districts were redrawn after the 2020 census, so each map lists the General Courts it applies to. Edit this file if a district is wrong; run `python3 tracker.py --check-delegation` to see the members it selects and where the House members live.",
+  "maps": [
+    {
+      "name": "2011 redistricting",
+      "courts": [188, 189, 190, 191, 192],
+      "include_if_name_contains": ["Suffolk"],
+      "exclude": {
+        "House": ["16th Suffolk", "19th Suffolk"],
+        "Senate": []
+      },
+      "notes": "16th Suffolk (Revere, Chelsea, Saugus) and 19th Suffolk (Revere, Winthrop) don't include Boston."
+    },
+    {
+      "name": "2021 redistricting",
+      "courts": [193, 194, 195, 196, 197],
+      "include_if_name_contains": ["Suffolk"],
+      "exclude": {
+        "House": ["11th Suffolk", "16th Suffolk", "19th Suffolk"],
+        "Senate": []
+      },
+      "notes": "11th Suffolk became a Chelsea district in 2021. 16th and 19th Suffolk cover Revere, Chelsea, Saugus and Winthrop."
+    }
+  ]
+}

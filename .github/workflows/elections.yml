@@ -1,0 +1,68 @@
+name: Election and roster check
+
+# Looks for changes in who represents Boston: new or departed State House
+# delegation members, and City Council minutes naming councilors that
+# data/council_roster.json doesn't know. Opens (or updates) an issue when
+# something needs a hand edit.
+#
+# State and city elections are both in November and new terms start in
+# January, so it runs daily from November through January and weekly otherwise.
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"          # weekly, Mondays
+    - cron: "30 12 * 11,12,1 *"   # daily, November through January
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: elections
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Restore API cache
+        uses: actions/cache/restore@v4
+        with:
+          path: cache
+          key: api-cache-none
+          restore-keys: api-cache-
+
+      - name: Download the last published data
+        run: |
+          mkdir -p output
+          site="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+          curl -fsSL "$site/boston.json" -o output/boston.json || rm -f output/boston.json
+
+      - run: uv sync --frozen
+
+      - name: Check delegation and council roster
+        run: uv run tracker.py --check-elections
+
+      - name: Open or update the review issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -s output/alerts.md ] || { echo "Nothing to review."; exit 0; }
+          hash=$(sha256sum output/alerts.md | cut -c1-16)
+          printf '\n<!-- alerts:%s -->\n' "$hash" >> output/alerts.md
+          gh label create roster-check --color FBCA04 --description "Delegation or council roster needs review" --force
+          num=$(gh issue list --state open --label roster-check --json number -q '.[0].number')
+          if [ -z "$num" ]; then
+            gh issue create --title "Review: Boston delegation or City Council roster changed" \
+              --label roster-check --body-file output/alerts.md
+          elif gh issue view "$num" --json body,comments -q '[.body] + [.comments[].body] | join("\n")' | grep -q "alerts:$hash"; then
+            echo "Issue #$num already has these alerts."
+          else
+            gh issue comment "$num" --body-file output/alerts.md
+          fi
