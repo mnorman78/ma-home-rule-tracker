@@ -1,0 +1,27 @@
+name: Test notification
+
+# Run by hand (Actions → Test notification → Run workflow) to confirm that
+# notification emails reach you. Posts one issue with made-up example petitions,
+# from the same bot account the daily update uses.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - name: Post a test notification
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          NOTIFY_MENTION: "@${{ github.repository_owner }}"
+        run: |
+          uv run python scripts/test_notification.py
+          uv run python -m hrt.post output/notifications.json

@@ -16,6 +16,7 @@ from pathlib import Path
 LABELS = {
     "update": ("0E8A16", "Daily petition updates"),
     "session-report": ("B60205", "Petitions that died when a session ended"),
+    "test": ("C5DEF5", "Test notifications"),
 }
 
 
