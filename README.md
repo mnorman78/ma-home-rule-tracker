@@ -2,6 +2,8 @@
 
 Tracks Boston's home rule petitions from City Hall through the Massachusetts Legislature over the last 10 years: how the City Council voted, who carried each one at the State House, how far it got, and how Boston's delegation voted where a vote was recorded. See [PRD.md](PRD.md) for goals and data findings.
 
+**Live site: https://mnorman78.github.io/ma-home-rule-tracker/**. It's updated daily. The data behind it is at [boston.json](https://mnorman78.github.io/ma-home-rule-tracker/boston.json) and [changelog.json](https://mnorman78.github.io/ma-home-rule-tracker/changelog.json).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/). It installs Python 3.15 and the Anthropic SDK into `.venv`:
