@@ -1,1 +1,602 @@
-{}
+{
+ "189/H2339": {
+  "short_title": "Retired Boston police officers working paid details",
+  "summary": "Lets Boston's Police Commissioner appoint officers who retired normally within the past 4½ years as special officers with full arrest powers for police details. They serve one-year renewable terms, must pass a self-paid medical exam, and must stop at age 68. Their hours and earnings stay subject to state pension limits.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "189/H3200": {
+  "short_title": "Property tax deferral for long-term older homeowners",
+  "summary": "Lets Boston homeowners 55 or older, who have lived in their home for 10 straight years and meet a state income limit, put off paying property taxes when their tax bill rises at least 10% in a year. Deferred taxes accrue 4% interest and are repaid on sale or death. The program would run July 2015 to June 2017 unless extended.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "189/H3321": {
+  "short_title": "Redrawing Boston wards and precincts after each census",
+  "summary": "Starting in 2021, ends Boston's exemption from redrawing wards and precincts after each federal census, requiring the Board of Election Commissioners to redraw them if populations are unequal. The board must send its plan to the City Council at least 21 days before June 15; the Council votes by June 15, then the mayor approves.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "189/H3326": {
+  "short_title": "Higher snow removal fines for commercial properties",
+  "summary": "Lets Boston fine up to $1,500 commercial snow removers who push snow onto public streets, and owners of larger buildings (more than six units, or commercial) who fail to clear abutting sidewalks and curb ramps. Also applies local sidewalk snow rules to private property along state highways and DCR parkways.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "189/H3327": {
+  "short_title": "Rename State-Boston Retirement System to Boston Retirement System",
+  "summary": "Renames the State-Boston Retirement System as the Boston Retirement System by replacing \"State-Boston\" with \"Boston\" throughout the state's public employee retirement law (Chapter 32). The bill only changes the name; it does not change pensions or benefits for city retirees and employees.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "189/H3617": {
+  "short_title": "Contracting rules for Whittier public housing redevelopment",
+  "summary": "Exempts the Boston Housing Authority's redevelopment of the federally funded Whittier public housing project from standard public construction bidding laws, while still requiring prevailing wages. Related public works contracts would follow state bidding rules if tax credits, grants, loans, or tax-exempt bonds are used. Transfers of the project to outside entities would follow state procurement law.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "189/H3694": {
+  "short_title": "Retirement classification for Boston school police officers",
+  "summary": "Would amend the state public employee retirement law to name Boston school police officers in the job classification list where other officers with police powers appear. This could change their retirement group and benefits. The change would take effect as soon as the law passes.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "189/H3729": {
+  "short_title": "Remove parks department from street closure permits",
+  "summary": "Would amend state law so Boston's temporary street closures no longer require a written request from the city's commissioner of parks and recreation, removing the Parks Department from the street closure permitting process. Takes effect immediately upon passage.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "189/H4349": {
+  "short_title": "20 mph default speed limit in Boston",
+  "summary": "Sets a default speed limit of 20 mph on city-controlled streets in Boston's thickly settled or business districts, and 15 mph in city-established school zones, unless a different limit is posted. Takes effect immediately upon passage.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "189/S1966": {
+  "short_title": "Orient Heights public housing redevelopment rules",
+  "summary": "Lets the Boston Housing Authority redevelop the state-funded Orient Heights public housing in East Boston without most public construction bidding laws, though prevailing wage rules still apply. The property could be transferred to a private or nonprofit owner if it agrees to keep following public housing rules for tenants.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "189/S1999": {
+  "short_title": "Changes to Boston's segregated reserve fund rules",
+  "summary": "Removes the last paragraph of Section 17A of the 1982 state law (chapter 190, as amended in 1986) that governs Boston's segregated reserve funds. The bill text doesn't say what that paragraph contains. The change would take effect immediately once passed.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H1113": {
+  "short_title": "Four-year terms for Boston city councillors",
+  "summary": "Would lengthen Boston City Council terms from two years to four, with municipal elections held every four years starting in 2017. The council would keep nine district and four at-large seats. It would also update the rules for a special election when the mayor's office becomes vacant within 40 months after a regular election.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H1363": {
+  "short_title": "Retirement classification for Boston school police officers",
+  "summary": "Adds Boston school police officers to a named list of public safety positions in the state retirement law (Chapter 32, Section 3). The bill does not say which retirement group they would join or what benefits would change. It would take effect immediately upon passage.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H1943": {
+  "short_title": "Raise veterans' burial expense limits",
+  "summary": "Would amend state veterans' benefits law to raise the burial expense limits for veterans from $2,000 to $4,000 and from $3,000 to $5,000, and delete another sentence of that section. It would take effect immediately upon passage.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H2243": {
+  "short_title": "Procurement exemption for Clippership housing redevelopment",
+  "summary": "Exempts the Boston Housing Authority's redevelopment of the Clippership portion of East Boston's Heritage public housing from standard public construction bidding laws, while still requiring prevailing wages. Related public works contracts must follow state bidding rules if state or federal tax credits, grants, loans, or tax-exempt bonds fund the project. Selling or leasing it to an outside entity must follow state procurement law.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H3460": {
+  "short_title": "Restructure the Boston Art Commission's membership",
+  "summary": "Sets the Boston Art Commission at 9 mayor-appointed Boston residents, mostly picked from nominees of institutions such as the Museum of Fine Arts and Gardner Museum, plus two voting ex officio city officials. Members would serve 5-year terms, renewable once, and the commission would get a paid director.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H3537": {
+  "short_title": "Three-year residency preference for police and fire hiring",
+  "summary": "New Boston police officer and firefighter applicants would get a hiring preference only if they have lived in Boston continuously for three years before their Civil Service exam. Residence means the person's actual principal home, where they normally eat, sleep, and keep their belongings.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H3540": {
+  "short_title": "Contracting rules for West Newton-Rutland-East Springfield housing redevelopment",
+  "summary": "Exempts the Boston Housing Authority's redevelopment of the West Newton-Rutland-East Springfield public housing in the South End from standard public construction bidding laws, while still requiring prevailing wage rules. Related public works stay under state bidding law if tax credits or bonds fund it. Transfers to outside entities follow state procurement law.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H3541": {
+  "short_title": "Rent and eviction protections for subsidized housing",
+  "summary": "Would require Boston to regulate rents in housing that is or was government-subsidized or mortgage-insured, capping rents at July 1, 1994 levels adjusted for a fair owner return. It would limit evictions to listed just causes, require permits before conversion or sale out of low-income use, and set fines up to $2,000.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H3542": {
+  "short_title": "15 liquor licenses for South Bay development",
+  "summary": "Lets Boston's licensing board grant up to 12 full liquor licenses and 3 beer-and-wine licenses for on-site drinking at the South Bay development (District Avenue, Lucy Street, Jan Karski Way). The licenses can't be transferred, and if one is given up it can only be reissued to another business in South Bay.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H3672": {
+  "short_title": "Boston nomination petition form and signature rules",
+  "summary": "Updates Boston's municipal election nomination petition form, changing \"19\" to \"20\" in the form and removing its second paragraph, and lets voters sign nomination petitions for as many candidates for the same office as they choose. Takes effect on passage if by April 19, 2017; otherwise January 1, 2018.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H3749": {
+  "short_title": "Shadow rules for Common, Public Garden, Copley Square",
+  "summary": "Allows new buildings on city-owned land near Federal, Franklin and Devonshire Streets (the Winthrop Square site) to shadow Boston Common up to two hours and the Public Garden up to 45 minutes each morning. It also limits Stuart Street District shadows on Copley Square Park and requires a downtown planning study within three years.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H3759": {
+  "short_title": "Convention center surcharges to fund early education",
+  "summary": "Starting July 1, 2017, certain Boston surcharges now collected for the state's Convention Center Fund would go into a new City of Boston Early Education Fund and then to the city. The money would first cover convention center bond payments if needed, and would go back to the Convention Center Fund if the state proceeds with the BCEC expansion.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H3862": {
+  "short_title": "Expand Boston Public Library board to fifteen trustees",
+  "summary": "Would change the number of trustees on the Boston Public Library's board from exactly nine to up to fifteen, amending the library's 1878 founding law. The change would take effect as soon as the law is passed.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H389": {
+  "short_title": "Ban running for two offices at once",
+  "summary": "Would bar candidates in Boston municipal elections from seeking nomination for two elective city offices in the same election. The change amends Boston's 1948 city charter law and takes effect as soon as it passes.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H4057": {
+  "short_title": "Health insurance for surviving spouses of firefighters",
+  "summary": "If a Boston firefighter is killed or dies from injuries or illness suffered on duty, the surviving spouse could keep the city's group health, dental and other insurance for themselves and dependents under 26. The city would pay at least 50% of the premium.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H4069": {
+  "short_title": "Condo owners' right to install EV chargers",
+  "summary": "Condo, co-op, and homeowners' associations in Boston could not ban or unreasonably restrict owners from installing electric vehicle chargers at their dedicated parking spots. Owners would pay for installation by a licensed electrician, upkeep, and electricity, and an association that doesn't deny an application in writing within 60 days would be treated as approving it.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H4073": {
+  "short_title": "Residential exemption deadline for new Boston homeowners",
+  "summary": "Boston homeowners qualify for the residential property tax exemption based on whether they own and live in the home on January 1 before the fiscal year. Buyers whose deed is recorded at the Suffolk County Registry of Deeds between January 1 and July 1 would instead be judged as of July 1 for that purchase year.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H4086": {
+  "short_title": "Council confirmation and vacancy rules for city boards",
+  "summary": "Lets Boston's mayor fill any seat on several city boards and commissions, including the zoning commission and zoning board, if the designated nominating groups don't recommend nominees within 90 days of written notice. Several commissions would also need City Council confirmation of appointees, and some would require members to remain Boston residents.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H4142": {
+  "short_title": "Eviction notice rules and post-foreclosure tenant protections",
+  "summary": "Requires Boston landlords and foreclosing owners to give tenants and former homeowners a city rights notice with any eviction or nonrenewal notice, file copies with the Office of Housing Stability, and give 30 days' notice before going to court. Foreclosing owners could evict former homeowners only for listed causes. Owners of six or fewer units are exempt, among others.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H4238": {
+  "short_title": "Procurement exemption for Amory Street public housing redevelopment",
+  "summary": "Exempts the Boston Housing Authority's redevelopment of the Amory Street public housing project in Jamaica Plain from state public construction bidding laws, while still requiring prevailing wages. Related public works stay under standard bidding rules if tax credits, grants, loans, or tax-exempt bonds fund the project. Property sales to outside entities remain under state procurement law.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H4288": {
+  "short_title": "Lenox and Camden public housing redevelopment rules",
+  "summary": "Exempts the Boston Housing Authority's redevelopment of the Lenox and Camden public housing projects in Roxbury from standard public construction bidding laws, though prevailing wage rules still apply. Allows the projects to be transferred to a private or nonprofit owner, which must keep the state-funded portion operating under state public housing rules.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/H4324": {
+  "short_title": "Energy microgrid contract for Raymond L. Flynn Marine Park",
+  "summary": "Lets Boston's Economic Development and Industrial Corporation hire a single energy company through a qualifications-based process to build, run, and finance a district energy microgrid and building energy upgrades for public and private properties in the Raymond L. Flynn Marine Park. Contracts can last up to 20 years plus one 5-year extension, and the company must guarantee the promised savings.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/S2540": {
+  "short_title": "Conservation land parcel in Boston",
+  "summary": "Would make an unspecified legal change concerning a particular parcel of conservation land in Boston, filed by Senator Michael F. Rush and Representative Angelo M. Scaccia with the mayor and city council's approval. The bill text is not available, so the specific parcel and the change are not stated.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "190/S2561": {
+  "short_title": "Shared police jurisdiction at Massport properties",
+  "summary": "Changes a 1996 law so State Police keep their authority over Massport properties used only for aviation, but share police authority with the Boston Police Department at all other Massachusetts Port Authority properties in Boston.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H2212": {
+  "short_title": "Group 2 retirement for Boston school police",
+  "summary": "Moves Boston school police officers into Group 2 of the state public employee retirement system, the classification for workers in hazardous or public-safety jobs, which generally allows earlier retirement with higher benefits. The change would take effect as soon as the law passes.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H3696": {
+  "short_title": "Procurement exemption for Eva White housing redevelopment",
+  "summary": "Exempts the Boston Housing Authority's redevelopment of the Eva White affordable housing development in the South End from public construction bidding laws, while still requiring prevailing wages. Public works contracts follow state bidding rules if tax credits, grants, loans, or tax-exempt bonds are used, and sales or leases to outside entities follow state procurement law.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H3748": {
+  "short_title": "Boston residency preference for police and firefighter hiring",
+  "summary": "Applicants for entry-level Boston police officer or firefighter jobs would get a hiring preference only if they actually lived in Boston for three continuous years immediately before their Civil Service exam. Applicants without that three-year residence would get no preference.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H3858": {
+  "short_title": "Four-year terms for Boston city councillors",
+  "summary": "Would change Boston's charter so city councillors serve four-year terms following the year they are elected, instead of their current terms. It would take effect immediately upon passage, and if any part were ruled unconstitutional, the rest would still stand.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H3859": {
+  "short_title": "Early voting in Boston municipal elections",
+  "summary": "Requires Boston's Board of Election Commissioners to offer early voting to all qualified voters in regular biennial city elections, with rules on locations, dates, staffing, and ballot handling issued within six months. Early voting would begin at the next municipal election after the rules are approved, and all sites must be accessible to people with disabilities.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H3860": {
+  "short_title": "Ban running for two offices at once",
+  "summary": "Would bar any candidate in Boston from seeking nomination for two elected offices in the same municipal election, by amending the city's 1948 charter law. The change would take effect immediately upon passage.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H4049": {
+  "short_title": "Boston Fire Department cadet program",
+  "summary": "Lets Boston hire city residents aged 18–25 as fire cadets doing administrative work outside civil service rules, until age 27. After two years, cadets could become firefighters without the usual civil service list if they pass a qualifying exam or are on the eligible list. Cadets could fill at most one-third of yearly firefighter appointments.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H4100": {
+  "short_title": "Liquor license for Charles River Speedway building",
+  "summary": "Lets Boston's licensing board issue one extra all-alcohol license for drinking on the premises at the Charles River Speedway Administration Building in Brighton (Soldiers Field Road, Western Avenue, North Arsenal Street, and Leo M. Birmingham Parkway). The license cannot move elsewhere and returns to the board for reissue at the site if no longer used.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H4115": {
+  "short_title": "Inclusionary zoning and linkage fee updates",
+  "summary": "Would let Boston's zoning commission require affordable units or payments in residential projects even without zoning relief. It would also let the commission adjust linkage fees on commercial developments over 100,000 sq ft (now $9.03 for housing, $1.78 for jobs per sq ft). Those fees would rise automatically each July 1.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H4438": {
+  "short_title": "Charlestown public housing redevelopment contracting exemption",
+  "summary": "Lets the Boston Housing Authority redevelop the federally funded Charlestown public housing project without following the state's usual public contracting and bidding laws, though prevailing wage rules still apply. If the project is conveyed to an outside redevelopment or nonprofit corporation, state procurement law (chapter 30B) would govern that conveyance.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H4514": {
+  "short_title": "Real estate transfer fee for affordable housing",
+  "summary": "Would let Boston charge a fee of up to 2% on property sales of $2 million or more (1% paid by the seller, 1% by the buyer), with exemptions for family transfers and government purchases. Money would go to the city's neighborhood housing trust or other affordable housing programs, with annual public reports.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H4915": {
+  "short_title": "Exempt J.J. Carroll redevelopment from public bidding laws",
+  "summary": "Lets the Boston Housing Authority redevelop the J.J. Carroll public housing project in Brighton without following state public construction bidding laws, though prevailing wage rules still apply. Transfers of the property to an outside redevelopment or nonprofit entity not controlled by the Housing Authority would still follow state procurement rules.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H4936": {
+  "short_title": "183 new neighborhood restaurant liquor licenses",
+  "summary": "Lets Boston's licensing board issue up to 183 new non-transferable licenses for on-site drinking. Most are reserved for nine neighborhoods such as Dorchester, Mattapan, and East Boston, plus Main Streets districts and minority-owned businesses. No more than 63 can be issued per year, and unused licenses return to the city. Takes effect September 1, 2020.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/H4954": {
+  "short_title": "Overhaul of Boston Zoning Board of Appeal",
+  "summary": "Rewrites the rules for Boston's Zoning Board of Appeal: nine members and nine alternates nominated by named groups, including environmental and planning experts and one homeowner and one renter from neighborhood groups, limited to two three-year terms. It also tightens conflict-of-interest rules, expands electronic notice, and requires quarterly reports on variances by neighborhood.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/S1380": {
+  "short_title": "Shared police jurisdiction at Massport properties in Boston",
+  "summary": "Would limit State Police exclusive authority to Logan Airport and other Massport properties used only for aviation, and give Boston Police shared (concurrent) authority with State Police at all other Massport properties in Boston, such as seaport and waterfront land.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "191/S1483": {
+  "short_title": "Health insurance for surviving spouses of firefighters",
+  "summary": "If a Boston firefighter is killed or dies from injury or illness suffered on duty, the surviving spouse could keep the city's group health, dental and other insurance for themselves and dependents under 26. The city would pay at least 50% of the premium.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H2201": {
+  "short_title": "Overhaul of Boston Zoning Board of Appeal",
+  "summary": "Restructures Boston's Zoning Board of Appeal with nine members and nine alternates nominated by named groups, including environmental, planning, real estate, construction and neighborhood representatives (one homeowner, one renter). It caps members at two three-year terms and tightens conflict-of-interest rules. It also expands online hearing notice, requires published decisions and quarterly variance reports, and provides neutral public guidance staff.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H2687": {
+  "short_title": "Residency hiring preference for Boston police and fire",
+  "summary": "Applicants for entry-level Boston police officer or firefighter jobs would get a hiring preference only if they have lived in Boston continuously for the three years immediately before their Civil Service exam. \"Residence\" means the person's actual principal home, where they normally eat, sleep, and keep their belongings.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H2942": {
+  "short_title": "Real estate transfer fee for affordable housing",
+  "summary": "Would let Boston charge a fee of up to 2% on property sales of $2 million or more, split between seller (1%) and buyer (1%), with the money going to affordable housing. Family transfers, transfers of convenience, and government transfers are exempt, and the city could add further exemptions.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H3753": {
+  "short_title": "Hiring preference for Boston high school graduates as police",
+  "summary": "On civil service hiring lists for Boston police officers, people who graduated from a Boston high school (public or private), or from a METCO school while living in Boston, would rank right after veterans and veterans' widows and mothers, ahead of all other applicants. The existing three-year Boston residency preference and police cadet hiring continue.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H4111": {
+  "short_title": "Alternative retirement benefit option for Boston teachers, nurses",
+  "summary": "Lets the Boston Retirement System enroll teachers and school nurses in an alternative retirement benefit program funded by 11% pay contributions. Those transferring in on or after July 1, 2019 join automatically but may opt out within 180 days. Earlier members who never enrolled get a one-time, irrevocable chance to join, possibly paying makeup contributions with interest.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H4205": {
+  "short_title": "Amory Street public housing redevelopment contracting rules",
+  "summary": "Exempts the Boston Housing Authority's redevelopment of the Amory Street public housing project in Jamaica Plain from standard public construction bidding laws, while keeping prevailing wage requirements. Related public works contracts and any sale or lease of the property to an outside developer would still follow certain state bidding rules.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H4229": {
+  "short_title": "Rent and eviction protections for subsidized housing",
+  "summary": "Would require Boston to regulate rents and evictions in privately owned housing that is or was government-subsidized, capping rents at July 1, 1994 levels adjusted for fair owner income. Owners would need a city permit to sell, convert, or end low-income use, with tenants and nonprofits able to buy. Violations carry fines up to $2,000.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H4565": {
+  "short_title": "Let Boston landmarks qualify on local significance",
+  "summary": "Lets the Boston Landmarks Commission designate a landmark based on significance to Boston alone, rather than requiring significance to both the city and the state, region, or nation. Properties with active permits or variances, and Planned Development Areas for two years, are exempt. Takes effect the July 1 after passage.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H4637": {
+  "short_title": "Real estate transfer fee and senior tax relief",
+  "summary": "Lets Boston charge sellers a fee of up to 2% on property sales above $2 million, with family and government transfers exempt, and put the money toward affordable housing. It also expands the senior homeowner tax exemption, raising it from $500 to $1,500 and loosening income and asset limits.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H5036": {
+  "short_title": "Mary Ellen McCormack housing redevelopment contracting exemption",
+  "summary": "Exempts the Boston Housing Authority's redevelopment of the Mary Ellen McCormack public housing development in South Boston from state public construction bidding laws, while still requiring prevailing wage rules. Transferring the property to an outside redevelopment or nonprofit entity not controlled by the BHA would remain subject to state procurement law.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H5039": {
+  "short_title": "Small purchases from diverse and local businesses",
+  "summary": "Lets the City of Boston and several city agencies, including the Housing Authority and Water and Sewer Commission, buy supplies or services costing $10,000 up to the state's small-purchase limit by seeking written quotes from at least three certified disadvantaged, diverse, or small local businesses. The contract would go to the lowest qualified quote.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H5097": {
+  "short_title": "Chinatown affordable housing and branch library procurement exemption",
+  "summary": "Exempts construction of a subsidized affordable housing development with a Boston Public Library branch in Chinatown, built by a BPDA-selected developer on BPDA-owned land under a ground lease, from state public construction bidding and contracting laws. State prevailing wage requirements would still apply.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H5317": {
+  "short_title": "Fossil fuel-free rules for new buildings",
+  "summary": "Lets Boston restrict or ban new construction and major renovations that aren't fossil fuel-free, including by withholding building permits. Research labs, hospitals, and medical offices are exempt. A mayor- and council-appointed advisory committee must meet at least three times to help set definitions and transition timelines before the ordinance is introduced.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "192/H67": {
+  "short_title": "No special election for 2021 mayoral vacancy",
+  "summary": "If the Boston mayor's office becomes vacant at any point in 2021, no special election would be held. Instead, a new mayor would be chosen at the next regular municipal election, as the city charter already provides. The law would take effect immediately upon passage.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H1360": {
+  "short_title": "Rent and eviction protections for subsidized housing",
+  "summary": "Lets Boston, despite the state rent control ban, regulate rents and limit evictions to specific causes in current and formerly government-subsidized apartments. Owners would need a city permit to convert units to market rate or condos, with tenants and nonprofits able to buy. Violations carry fines up to $500, or $2,000 for repeat offenses.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H2793": {
+  "short_title": "Real estate transfer fee and senior tax relief",
+  "summary": "Lets Boston charge sellers a fee of up to 2% on property sales above $2 million, with exemptions such as family transfers, and put the money into the city's housing trust. It also expands Boston's senior property tax exemption, raising it from $500 to $1,500 and loosening income and asset limits.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H3741": {
+  "short_title": "New neighborhood liquor licenses in ten Boston ZIP codes",
+  "summary": "Lets Boston's licensing board grant, each year for five years, up to three full-liquor and two beer-and-wine non-transferable licenses for on-site drinking in each of ten ZIP codes, including 02119, 02121, 02124, 02126 and 02136. Unused licenses roll over, and revoked ones return for reuse in the same ZIP code.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H3744": {
+  "short_title": "Rent stabilization and eviction protections for Boston",
+  "summary": "Would let Boston cap yearly rent increases at inflation plus 6% or 10%, whichever is lower, with exemptions like small owner-occupied buildings and units under 15 years old. It also allows just-cause eviction rules and tenant notice and relocation payments for condo conversions, demolitions, and major renovations.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H3872": {
+  "short_title": "New 2023 deadlines for district council candidates",
+  "summary": "Sets new 2023 nomination paper deadlines for Boston district city council candidates (filing by June 23), keeps the September 12 and November 7 election dates and at-large deadlines unchanged, and counts signatures gathered under the court-blocked 2022 district map if the voter lives in the old or new district.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H4065": {
+  "short_title": "Replace BRA and EDIC with new planning agency",
+  "summary": "Abolishes the Boston Redevelopment Authority and the Economic Development and Industrial Corporation and merges them into a new Boston Planning & Development Agency. The agency could make citywide affordability, climate resiliency, and community development plans, which need public hearings and mayoral approval. It could adopt no new urban renewal plans, and existing plan restrictions could be enforced through 2060.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H4076": {
+  "short_title": "Expand Historic Beacon Hill District boundaries",
+  "summary": "Enlarges the Historic Beacon Hill District to cover more area up to Cambridge Street, Bowdoin Street, Embankment Road and Charles Street Circle, including 131 and 141 Cambridge Street and 2-16 Lynde Street. Lets the district commission fine violators after a public hearing. Also lets the city rebuild Cambridge Street sidewalks and allows emergency repairs or demolitions without commission approval.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H4432": {
+  "short_title": "Procurement exemption for Dorchester housing with library branch",
+  "summary": "Exempts construction of a BPDA-selected affordable housing development in Dorchester, which will include space for a Boston Public Library branch on BPDA-owned leased land, from public building procurement laws. Prevailing wage rules still apply, as do certain public works bidding and property conveyance rules in specified cases.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H4507": {
+  "short_title": "Raise maximum fine for city ordinance violations",
+  "summary": "Raises the maximum fine Boston can impose for violating a city ordinance from $300 to $2,000. The cap would be adjusted for inflation, rounded to the nearest $100, on January 1, 2025 and every five years after, using the Boston-area Consumer Price Index.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H4770": {
+  "short_title": "West End library and affordable housing redevelopment",
+  "summary": "Lets a developer chosen by the Mayor's Office of Housing redevelop the city-owned West End branch library site under a ground lease, building subsidized affordable housing and new library space without following state public construction bidding and property disposition laws. State prevailing wage rules would still apply.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H4805": {
+  "short_title": "Temporary shift of property taxes toward commercial",
+  "summary": "Lets Boston temporarily tax commercial property more heavily so residential owners don't bear a larger share of the levy. For fiscal years 2025–2028 the residential factor floor drops to 45–50%, with the commercial share capped at 200% (falling to 183%). Standard rules return in 2029. Boston may delay the schedule by one or two years.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H4894": {
+  "short_title": "Shorten Boston fire cadet service requirement to one year",
+  "summary": "Changes Boston's 2020 fire cadet law so cadets need 1 year of service instead of 2 before they can be appointed as entry-level firefighters without civil service certification, provided they are on an eligible list or pass a qualifying exam. Cadets also couldn't be removed for age until completing 1 year.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H5099": {
+  "short_title": "Temporary commercial tax shift and small business relief",
+  "summary": "For fiscal years 2025–2027, Boston could shift more of the property tax burden onto commercial property, up to 181.5%, 180%, and 178% of its value share, to keep residential taxes from rising as a share of the levy. Normal rules return in 2028. The bill also allows a personal property exemption of up to $30,000. It permits up to $15 million in grants for small businesses.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/H692": {
+  "short_title": "Voting at 16 and 17 in local elections",
+  "summary": "Lets Boston residents aged 16 and 17 who are otherwise eligible sign up on a separate voter list and vote for local offices and local ballot questions, but not state or federal races. At 18 they are removed and must register as regular voters; the city pays for special forms and ballots.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/S2374": {
+  "short_title": "Environmental justice rules for Boston zoning",
+  "summary": "Requires the Boston Zoning Commission to adopt, within one year, zoning rules for reviewing utility company proposals and enforcing environmental justice standards. Lets the Building Commissioner suspend or revoke permits for land uses that threaten constitutional environmental rights, environmental justice principles, or public tidelands rights, and requires a public enforcement report to the City Council.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/S2380": {
+  "short_title": "More neighborhood liquor licenses in ten Boston ZIP codes",
+  "summary": "Lets Boston's licensing board grant, each year for five years, up to three all-alcohol and two beer-and-wine restaurant/bar licenses in each of ten ZIP codes, including 02119, 02121, 02124, 02126 and 02136. Licenses are non-transferable, unused ones roll over, and revoked ones return for reuse in the same ZIP code.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/S429": {
+  "short_title": "Voting in city elections at 16 and 17",
+  "summary": "Would let Boston residents aged 16 and 17 who are otherwise eligible register on a separate list and vote for local offices and local ballot questions. They would be removed at 18 and told to register normally. Their votes would not extend to state or federal offices or questions.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "193/S891": {
+  "short_title": "Rent and eviction protections for subsidized housing",
+  "summary": "Would require Boston to regulate rents in currently or formerly government-subsidized apartments, capped at July 1, 1994 levels adjusted for fair owner income. Evictions would need just cause, and owners would need a city permit to convert units to market rate or condos. Willful violations carry fines up to $500, or $2,000 for repeat offenses.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H2995": {
+  "short_title": "Shorten fire cadet service requirement to one year",
+  "summary": "Changes Boston's fire cadet program so cadets need 1 year of service instead of 2 before they can be appointed as entry-level firefighters without the usual civil service list. They must still be on the firefighter eligibility list or pass a qualifying exam. Cadets also couldn't be removed for age once they've served 1 year.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H3443": {
+  "short_title": "Procurement exemption for Dorchester housing and library project",
+  "summary": "Exempts a subsidized affordable housing development in Dorchester, built on Boston Planning & Development Agency land under a ground lease and including Boston Public Library branch space, from public construction bidding laws. Prevailing wage rules still apply, and some public works contracts and property transfers remain subject to state bidding laws.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H3904": {
+  "short_title": "Expanded senior homeowner property tax exemption",
+  "summary": "Raises Boston's senior property tax exemption under state clause 41C from $500 to $1,500. It also loosens eligibility limits: the income cap becomes 50% of HUD Area Median Income, adjusted for household size. The asset limits rise from $28,000/$30,000 to up to $80,000/$110,000. Takes effect upon passage.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H3932": {
+  "short_title": "Procurement exemption for Dorchester housing and branch library",
+  "summary": "Exempts a subsidized affordable housing project with a Boston Public Library branch, built on Boston Redevelopment Authority land in Dorchester, from state public construction bidding laws, though prevailing wage rules still apply. City land purchases for the project would also be exempt from certain procurement rules and cost limits.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H4090": {
+  "short_title": "No special election for 2025 district council vacancies",
+  "summary": "If a Boston district city council seat becomes vacant at any time in 2025, no special election would be held. Instead, the winner of the November 4, 2025 regular municipal election for that district would fill the seat once sworn in, serving through the end of their elected term.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H4093": {
+  "short_title": "Raise Boston police recruit age limit to 45",
+  "summary": "Raises the maximum age for becoming a Boston police officer by changing the cutoff in a 2007 state law from 40th to 45th birthday, so applicants up to age 45 could enter the police academy. Takes effect immediately upon passage.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H4253": {
+  "short_title": "New start date for Boston elected terms",
+  "summary": "Changes when Boston's elected terms and municipal year begin, from the first Monday in January to the first weekday after January 2. The change would start with the terms and municipal year beginning January 5, 2026.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H4262": {
+  "short_title": "Ranked choice voting for Boston city elections",
+  "summary": "Boston would use ranked choice voting, letting voters rank up to four candidates, for mayor and district council races with three or more candidates and for at-large council races. Four candidates per seat would advance from preliminaries. Voters must approve it at a ballot question, and it would apply to elections at least 365 days later.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H4415": {
+  "short_title": "Procurement exemption for Faneuil Gardens redevelopment",
+  "summary": "Lets the Boston Housing Authority redevelop Faneuil Gardens (between Faneuil and North Beacon Streets) and an adjacent parcel at North Beacon and Goodenough Streets in Brighton into affordable and mixed-income housing, cultural space, and replacement musician rehearsal space without following state public construction bidding and property disposition laws, though prevailing wage rules still apply.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H4924": {
+  "short_title": "Replace Finance Commission with Inspector General oversight",
+  "summary": "Restructures Boston's Finance Commission into a five-member, governor-appointed Inspector General Oversight Commission that hires a city Inspector General for five-year terms (two-term limit) with subpoena power to investigate fraud, waste, and mismanagement. It also protects whistleblowers and requires an annual public report by March 1 and guaranteed city funding. Takes effect 120 days after passage.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H5317": {
+  "short_title": "Joslin Park land swap for cancer hospital",
+  "summary": "Lets Boston grant a roadway easement over about 3,654 square feet of Joslin Park near Brookline Avenue for a new cancer hospital at One Joslin Place. In exchange, portions of Deaconess Road and Joslin Place become parkland, so the protected park loses no net land.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H5464": {
+  "short_title": "Real estate transfer fee and senior tax relief",
+  "summary": "Would let Boston charge sellers a fee of up to 2% on property sales above $2 million, with exemptions such as family and government transfers, and put the money toward affordable housing. It would also raise Boston's senior property tax exemption from $500 to $1,500 and loosen its income and asset limits.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/H841": {
+  "short_title": "Local voting rights for 16- and 17-year-olds",
+  "summary": "Would let Boston residents aged 16 and 17 register on a separate list and vote in city elections and local ballot questions, but not state or federal races. At 18 they would be removed from the list and told to register as regular voters; Boston would pay for forms and separate ballots.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/S2511": {
+  "short_title": "No special election for 2025 district council vacancies",
+  "summary": "If any Boston district city council seat becomes vacant during 2025, no special election would be held. Instead, the winner of that district's regular November 4, 2025 election would fill the seat as soon as they take the oath after being certified, and would serve through the end of their elected term.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/S2750": {
+  "short_title": "Group 2 retirement for Boston 911 dispatchers",
+  "summary": "Moves full-time Boston 911 dispatchers, dispatch supervisors, and call takers certified by the State 911 Department into the Group 2 public retirement classification. The change would take effect as soon as the law passes.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/S2956": {
+  "short_title": "Replace Finance Commission with Inspector General oversight",
+  "summary": "Restructures Boston's Finance Commission into a five-member, governor-appointed Inspector General Oversight Commission that hires an Inspector General for five-year terms (two-term limit). The Inspector General could investigate fraud, waste and mismanagement in city business, issue subpoenas, and must publish an annual report by March 1. It also adds whistleblower protections and sets budget rules.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ },
+ "194/S3033": {
+  "short_title": "Joslin Park land swap for cancer hospital",
+  "summary": "Lets Boston convert about 3,654 square feet of Joslin Park, near Brookline Avenue in the Longwood area, into a roadway easement. This would allow construction of a new cancer hospital at One Joslin Place. In exchange, roughly 5,000 square feet of Joslin Place and Deaconess Road would become protected parkland. The park cannot lose total acreage.",
+  "model": "claude-opus-5-5",
+  "generated": "2026-11-11"
+ }
+}
