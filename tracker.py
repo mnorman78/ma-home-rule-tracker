@@ -28,6 +28,7 @@ from hrt.council import Legistar, Roster, council_petitions
 from hrt.delegation import all_members, delegation, load_rules
 from hrt.elections import alerts_markdown, calendar, check_council_roster, check_delegation as check_delegation_changes
 from hrt.matching import load_overrides
+from hrt.notify import build_notifications
 from hrt.pipeline import COUNCIL_FROM, attach_council, build
 from hrt.report import render
 from hrt.summaries import Summarizer
@@ -122,8 +123,13 @@ def main(argv=None) -> int:
     changelog = update_changelog(changelog, events)
     dataset["changes"] = changelog[:200]
     dataset["calendar"] = calendar()
+    notifications = build_notifications(previous, dataset, events, site=os.environ.get("SITE_URL"),
+                                        mention=os.environ.get("NOTIFY_MENTION"), today=dt.date.today().isoformat())
 
     args.out.mkdir(parents=True, exist_ok=True)
+    (args.out / "notifications.json").write_text(json.dumps(notifications, indent=1, ensure_ascii=False))
+    for n in notifications:
+        print(f"Notification: {n['title']}")
     (args.out / f"{slug}.json").write_text(json.dumps(dataset, indent=1, ensure_ascii=False))
     (args.out / "changelog.json").write_text(json.dumps(changelog, indent=1, ensure_ascii=False))
     (args.out / f"{slug}.html").write_text(render(dataset))

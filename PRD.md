@@ -121,6 +121,17 @@ Hand corrections go in `data/council_matches.json`. Result: 89 of the 121 state 
 - R17. Track election and term dates (computed from the rules: state elections in even years, Boston municipal elections in odd years, terms starting in January).
 - R18. Check weekly, and daily from November through January, for new or departed delegation members and for councilors the roster doesn't know. Open a GitHub issue when a hand edit is needed.
 
+### Notifications
+
+Delivered as GitHub issues that mention the owner, so GitHub emails them. This needs no credentials, and the issues double as a searchable log.
+
+- R19. One email per day, only when something happened, covering:
+  - petitions passed by the City Council;
+  - petitions taken up by the Legislature: filed, hearing scheduled, or reported out of committee;
+  - petitions voted on by the Legislature: passed a chamber, enacted, signed, or vetoed.
+- R20. When a General Court ends, one email listing every petition that died in it, with its furthest step, sponsor and City Council vote.
+- R21. Never email the same change twice. Notifications are posted only after the site deploys, because the next run compares against the published data.
+
 ## Open questions
 
 - Council votes before 2021: the City Clerk may have older minutes outside Legistar. Worth backfilling?

@@ -45,6 +45,18 @@ Two scheduled workflows keep the published report current:
 | [Daily update](.github/workflows/update.yml) | Every day, 6–7 AM Boston time | Checks the Legislature and City Council for new petitions and changes, records them in the report's **Updates** tab, and republishes GitHub Pages. New summaries are committed back to `data/summaries.json`. |
 | [Election and roster check](.github/workflows/elections.yml) | Weekly on Mondays; daily November–January | Compares Boston's State House delegation with the last published run, and scans recent City Council minutes for councilors the roster doesn't know (or roster members who stopped appearing). Opens or updates a `roster-check` issue when something needs a hand edit. |
 
+### Email notifications
+
+The daily update posts notifications as GitHub issues that mention the repository owner, so GitHub emails them to the address on that account:
+
+- **Daily, only when something happened** (label `update`): one issue grouping
+  - petitions **passed by the City Council**,
+  - petitions **taken up by the Legislature**: filed at the State House, hearing scheduled, or reported out of committee,
+  - petitions **voted on by the Legislature**: passed a chamber, enacted, signed, or vetoed.
+- **When a General Court ends** (label `session-report`): the first run after the new session convenes (January of odd years) posts every petition that died in the session that just ended. It lists what was still pending at the end and what died earlier (sent to study, vetoed), each with its furthest step, sponsor and City Council vote.
+
+To get these by email, keep GitHub email notifications on for issues (Settings → Notifications on github.com). Close or unsubscribe from issues as you like; that doesn't affect tracking.
+
 The report's Updates tab also lists upcoming state and city elections and the dates new terms begin, computed from the election rules (not hardcoded).
 
 Optional repository secret: `ANTHROPIC_API_KEY`, to generate summaries in the scheduled run.
@@ -90,6 +102,8 @@ hrt/council.py      City Council dockets (Legistar) and votes (minutes PDFs)
 hrt/matching.py     links council dockets to state bills
 hrt/changes.py      what changed since the last run
 hrt/elections.py    election calendar, delegation and council roster checks
+hrt/notify.py       which changes trigger notifications; daily and end-of-session issues
+hrt/post.py         posts notifications as GitHub issues
 hrt/pipeline.py     builds the dataset across sessions
 hrt/report.py       HTML report
 ```

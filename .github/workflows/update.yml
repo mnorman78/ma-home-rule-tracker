@@ -12,6 +12,7 @@ permissions:
   contents: write # commit newly generated summaries back to the repo
   pages: write
   id-token: write
+  issues: write # notifications are posted as issues, which GitHub emails to the owner
 
 concurrency:
   group: tracker
@@ -51,6 +52,8 @@ jobs:
         env:
           # Optional: without this secret, summaries fall back to the Legislature's descriptions.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          NOTIFY_MENTION: "@${{ github.repository_owner }}"
 
       - name: Save new summaries
         run: |
@@ -70,3 +73,10 @@ jobs:
 
       - id: deploy
         uses: actions/deploy-pages@v4
+
+      # After a successful deploy: the next run compares against the published data, so posting
+      # before deploying could email the same changes twice if the deploy failed.
+      - name: Send notifications
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: uv run python -m hrt.post output/notifications.json

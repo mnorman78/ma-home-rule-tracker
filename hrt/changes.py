@@ -38,23 +38,34 @@ def diff(old: dict | None, new: dict) -> list[dict]:
         events.append({"date": today, "kind": kind, "text": text, **extra, **item})
 
     op, np_ = _petitions(old), _petitions(new)
+    # A docketed petition that gets its bill number changes key (194/HD4422 → 194/H5100); treat it as the same one.
+    old_by_docket = {(p["court"], p.get("docket")): k for k, p in op.items() if p.get("docket")}
+    renumbered: set[str] = set()
     for key, p in np_.items():
-        ref = {"key": key, "title": _label(p), "url": p.get("url")}
+        ref = {"key": key, "title": _label(p), "url": p.get("url"), "court": p.get("court"),
+               "bill": p.get("bill") or p.get("docket")}
         before = op.get(key)
+        if not before and (p.get("court"), p.get("docket")) in old_by_docket:
+            old_key = old_by_docket[(p["court"], p["docket"])]
+            if old_key not in np_:
+                before = op[old_key]
+                renumbered.add(old_key)
         if not before:
             who = (p.get("transmitter") or {}).get("name")
-            add("new_petition", ref, f"Filed at the State House{f' by {who}' if who else ''}")
+            add("new_petition", ref, f"Filed at the State House{f' by {who}' if who else ''}",
+                from_stage=None, to_stage=p.get("stage"))
             continue
+        stages = {"from_stage": before.get("stage"), "to_stage": p.get("stage")}
         if p.get("status") != before.get("status"):
             text = f"{before.get('status')} → {p['status']}"
             if p.get("chapter"):
                 text += f" ({p['chapter']})"
-            add("status", ref, text)
+            add("status", ref, text, **stages)
         elif p.get("stage_label") != before.get("stage_label"):
-            add("stage", ref, f"{before.get('stage_label')} → {p['stage_label']}")
+            add("stage", ref, f"{before.get('stage_label')} → {p['stage_label']}", **stages)
         if p.get("council") and not before.get("council"):
             add("council_link", ref, f"Linked to City Council docket {p['council']['docket']}")
-    for key in op.keys() - np_.keys():
+    for key in op.keys() - np_.keys() - renumbered:
         add("removed", {"key": key, "title": _label(op[key]), "url": op[key].get("url")},
             "No longer listed for Boston (renumbered or withdrawn)")
 
