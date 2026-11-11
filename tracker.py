@@ -22,7 +22,10 @@ import os
 import sys
 from pathlib import Path
 
+from collections import Counter
+
 from hrt.api import Client, court_years, current_court, ordinal
+from hrt.categories import LABELS, ROUTINE
 from hrt.changes import diff, load_json, update_changelog
 from hrt.council import Legistar, Roster, council_petitions
 from hrt.delegation import all_members, delegation, load_rules
@@ -118,6 +121,10 @@ def main(argv=None) -> int:
         dataset["council_petitions"], dataset["council_from"] = [], None
         for p in dataset["petitions"]:
             p["council"] = None
+
+    counts = Counter(p.get("category") for p in dataset["petitions"])
+    dataset["categories"] = [{"key": k, "label": label, "routine": k in ROUTINE, "count": counts[k]}
+                             for k, label in LABELS.items() if counts[k]]
 
     events = diff(previous, dataset)
     changelog = update_changelog(changelog, events)

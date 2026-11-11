@@ -7,6 +7,7 @@ import datetime as dt
 import re
 import sys
 
+from . import categories
 from .api import Client, bill_url, court_years, ordinal
 from .delegation import all_members, delegation
 from .history import STAGES, classify, clean, floor_record, pinslip_description
@@ -106,10 +107,13 @@ def build_court(client: Client, court: int, city: str, rules: list[dict], summar
         processed = list(ex.map(process, petitions_raw.items()))
 
     # Summaries come from the petition as Boston filed it (falling back to the redraft's text).
+    # Routine categories (age waivers, individual pensions) get a template summary instead.
+    cat_overrides = categories.load_overrides()
     summarizer.fill([
         {"court": court, "bill": bill, "title": doc.get("Title"), "pinslip": clean(doc.get("Pinslip")),
          "text": doc.get("DocumentText") or eff_doc.get("DocumentText") or ""}
         for bill, doc, _, _, eff_doc, _, _ in processed
+        if categories.needs_summary(court, bill, doc.get("Title"), cat_overrides)
     ])
 
     petitions = []
@@ -165,6 +169,7 @@ def build_court(client: Client, court: int, city: str, rules: list[dict], summar
             "floor": {}, "roll_calls": [],
         })
 
+    categories.apply(petitions, cat_overrides)
     petitions.sort(key=lambda p: p["last_action_date"] or "", reverse=True)
     petitions.sort(key=lambda p: -STAGES[p["stage"]]["rank"])
     info = {
@@ -210,6 +215,7 @@ def attach_council(dataset: dict, council: list[dict], overrides: dict) -> None:
         "docket": c["docket"],
         "url": c["url"],
         "title": c.get("act_title") or c["title"],
+        "category": categories.categorize(c.get("act_title") or c["title"]),
         "type": c["type"],
         "filed": c["filed"],
         "council_status": c["council_status"],

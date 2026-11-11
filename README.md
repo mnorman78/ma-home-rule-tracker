@@ -79,6 +79,18 @@ For each petition (a bill filed "with the approval of the mayor and city council
 | Delegation votes | Each Boston senator's Yea / Nay / Absent on Senate roll calls |
 | City Council vote (2021+) | Council docket, passage date and each councilor's vote, read from the City Clerk's minutes via Legistar |
 
+## Categories
+
+Each petition is sorted into a category by its title ([hrt/categories.py](hrt/categories.py)). The report can filter by category, or hide the routine ones.
+
+| Category | Summary |
+|---|---|
+| Age waivers (police and fire hires) | **Routine:** a standard summary filled in from the title, no Claude call |
+| Pensions and benefits for individuals | **Routine:** a standard summary filled in from the title, no Claude call |
+| Liquor licenses · Elections and city government · Taxes and fees · Housing and tenants · City workforce and public safety · Land, buildings and environment · Education | Written by Claude from the bill text |
+
+To move a single petition to a different category, add it to [data/category_overrides.json](data/category_overrides.json).
+
 ## Caveats
 
 - **Most petitions have no recorded votes.** They pass or die on voice votes, which don't record individual members. Only a handful since 2015 had roll calls.
@@ -98,6 +110,7 @@ hrt/api.py          API client with on-disk cache (closed sessions cached perman
 hrt/history.py      stage, status and floor-vote parsing from bill histories
 hrt/delegation.py   which members represent Boston
 hrt/summaries.py    Claude-written titles and summaries
+hrt/categories.py   categories by title; template summaries for routine petitions
 hrt/council.py      City Council dockets (Legistar) and votes (minutes PDFs)
 hrt/matching.py     links council dockets to state bills
 hrt/changes.py      what changed since the last run

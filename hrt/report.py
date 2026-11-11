@@ -69,6 +69,7 @@ th { color:var(--muted); font-weight:500; font-size:12px; text-transform:upperca
 .wrap table { min-width:640px; }
 .body table { max-width:460px; }
 .num { white-space:nowrap; font-variant-numeric:tabular-nums; }
+.cat { color:var(--accent); }
 .note { color:var(--muted); font-size:13px; }
 .foot { color:var(--muted); font-size:13px; margin-top:24px; max-width:760px; }
 @media (max-width:640px) {
@@ -87,6 +88,7 @@ th { color:var(--muted); font-weight:500; font-size:12px; text-transform:upperca
   <div class="tiles" id="tiles"></div>
   <div class="row">
     <input type="search" id="q" placeholder="Search titles and summaries">
+    <select id="cat"><option value="">All categories</option><option value="policy">Hide age waivers and pensions</option></select>
     <select id="who"><option value="">Any transmitting legislator</option></select>
   </div>
   <div class="count" id="count"></div>
@@ -123,7 +125,7 @@ th { color:var(--muted); font-weight:500; font-size:12px; text-transform:upperca
   <div class="wrap"><table><thead><tr><th>Member</th><th>District</th><th>Transmitted</th><th>Became law</th><th>Recorded votes</th></tr></thead><tbody id="dtable"></tbody></table></div>
 </section>
 
-<p class="foot">State data from the Massachusetts Legislature (malegislature.gov); City Council data from the Council's Legistar records and the City Clerk's minutes (2021 onward), linked to state bills by title and date. A home rule petition here is a bill filed "with the approval of the mayor and city council." Stages are read from each bill's history. When a petition was replaced by a new draft, its status follows the new bill. Summaries marked ✦ were written by Claude from the bill text; others are the Legislature's own filing description.</p>
+<p class="foot">State data from the Massachusetts Legislature (malegislature.gov); City Council data from the Council's Legistar records and the City Clerk's minutes (2021 onward), linked to state bills by title and date. A home rule petition here is a bill filed "with the approval of the mayor and city council." Stages are read from each bill's history. When a petition was replaced by a new draft, its status follows the new bill. Summaries marked ✦ were written by Claude from the bill text. Age waivers and individual pensions get a standard summary filled in from the title; anything else unmarked is the Legislature's own filing description.</p>
 </main>
 <script id="data" type="application/json">__DATA__</script>
 <script>
@@ -132,7 +134,10 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const STATUS = ['Became law', 'Pending', 'Died at end of session', 'Died'];
 const stCls = s => s === 'Became law' ? 'st-law' : s === 'Pending' ? 'st-pending' : 'st-dead';
-const state = { court: null, status: null, q: '', who: '' };
+const state = { court: null, status: null, q: '', who: '', cat: '' };
+const CATS = D.categories || [];
+const ROUTINE = new Set(CATS.filter(c => c.routine).map(c => c.key));
+const catLabel = k => (CATS.find(c => c.key === k) || {}).label || k;
 
 const years = D.sessions.map(s => s.years);
 const changes = D.changes || [];
@@ -153,6 +158,7 @@ function filtered(ignoreStatus) {
     (state.court === null || p.court === state.court) &&
     (ignoreStatus || !state.status || p.status === state.status) &&
     (!state.who || (p.transmitter && p.transmitter.name === state.who)) &&
+    (!state.cat || (state.cat === 'policy' ? !ROUTINE.has(p.category) : p.category === state.cat)) &&
     (!q || [p.title, p.short_title, p.summary, p.bill, p.docket].join(' ').toLowerCase().includes(q)));
 }
 
@@ -221,7 +227,7 @@ function card(p) {
   <summary>
     <div class="ptitle">${esc(p.short_title || p.title)}</div>
     <div class="psum">${p.summary_source === 'claude' ? '✦ ' : ''}${esc(p.summary)}</div>
-    <div class="pmeta">${esc(num)} · ${esc(p.years)} · ${who}</div>
+    <div class="pmeta"><span class="cat">${esc(catLabel(p.category))}</span> · ${esc(num)} · ${esc(p.years)} · ${who}</div>
     <div class="pright"><span class="status ${stCls(p.status)}">${esc(p.status)}</span><span class="stage">${stageLine}</span></div>
   </summary>
   <div class="body">
@@ -255,6 +261,8 @@ function renderPetitions() {
 const names = [...new Set(D.petitions.map(p => p.transmitter && p.transmitter.name).filter(Boolean))].sort();
 $('#who').innerHTML += names.map(n => `<option>${esc(n)}</option>`).join('');
 $('#who').onchange = e => { state.who = e.target.value; renderPetitions(); };
+$('#cat').innerHTML += CATS.map(c => `<option value="${esc(c.key)}">${esc(c.label)} (${c.count})</option>`).join('');
+$('#cat').onchange = e => { state.cat = e.target.value; renderPetitions(); };
 $('#q').oninput = e => { state.q = e.target.value; renderPetitions(); };
 
 let dCourt = D.sessions[0].court;
@@ -301,7 +309,7 @@ function renderCouncil() {
       return `<a href="#" data-key="${esc(k)}">${esc(p.bill || p.docket)}</a> <span class="status ${stCls(p.status)}">${esc(p.status)}</span>`;
     }).join('<br>') : (c.passed ? '<span class="note">Not found at the State House</span>' : '<span class="note">—</span>');
     return `<tr><td class="num"><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.docket)}</a></td>
-      <td>${esc(c.title)}<div class="note">Filed ${esc(c.filed || '—')} · ${esc(c.council_status || '')}</div></td>
+      <td>${esc(c.title)}<div class="note">${esc(catLabel(c.category))} · Filed ${esc(c.filed || '—')} · ${esc(c.council_status || '')}</div></td>
       <td>${c.passed ? esc(c.passed) + '<br>' : ''}${esc(c.passed ? voteLine(v) : 'Not passed')}${nays.length ? `<div class="note">Nay: ${nays.map(esc).join(', ')}</div>` : ''}</td>
       <td>${state}</td></tr>`;
   }).join('');

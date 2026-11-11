@@ -121,6 +121,11 @@ Hand corrections go in `data/council_matches.json`. Result: 89 of the 121 state 
 - R17. Track election and term dates (computed from the rules: state elections in even years, Boston municipal elections in odd years, terms starting in January).
 - R18. Check weekly, and daily from November through January, for new or departed delegation members and for councilors the roster doesn't know. Open a GitHub issue when a hand edit is needed.
 
+### Categories
+
+- R22. Sort every petition (and council docket) into a category by title. Routine categories are age waivers (54 of 182) and pensions or benefits for individuals (18). They get a standard summary filled in from the title instead of a Claude summary, which leaves about 100 petitions for Claude.
+- R23. The report filters by category, including a "hide age waivers and pensions" option.
+
 ### Notifications
 
 Delivered as GitHub issues that mention the owner, so GitHub emails them. This needs no credentials, and the issues double as a searchable log.

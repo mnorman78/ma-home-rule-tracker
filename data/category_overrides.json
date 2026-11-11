@@ -1,0 +1,3 @@
+{
+  "_about": "Put a single petition in a different category than its title suggests. Key: '<General Court>/<bill number>'. Value: one of age_waiver, individual_benefits, liquor, elections, taxes, housing, workforce, land_environment, education, other. age_waiver and individual_benefits are routine: they get a template summary instead of a Claude summary."
+}
