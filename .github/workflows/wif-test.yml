@@ -49,6 +49,13 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       - run: uv sync --frozen
 
+      # Each GitHub identity token can be exchanged only once, so the SDK gets a fresh one.
+      - name: Fetch a fresh identity token for the SDK
+        run: |
+          curl -fsS -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com" \
+            | jq -r .value > "$RUNNER_TEMP/gha-jwt"
+
       - name: Call Claude through the SDK, as the tracker does
         env:
           ANTHROPIC_IDENTITY_TOKEN_FILE: ${{ runner.temp }}/gha-jwt
