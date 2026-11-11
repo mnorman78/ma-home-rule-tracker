@@ -21,7 +21,9 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    # Daily runs take minutes from cache; a cold cache (first run, or after GitHub evicts it) downloads
+    # ten years of Journal PDFs and can take a couple of hours.
+    timeout-minutes: 300
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
