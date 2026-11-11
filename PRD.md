@@ -121,6 +121,22 @@ Hand corrections go in `data/council_matches.json`. Result: 89 of the 121 state 
 - R17. Track election and term dates (computed from the rules: state elections in even years, Boston municipal elections in odd years, terms starting in January).
 - R18. Check weekly, and daily from November through January, for new or departed delegation members and for councilors the roster doesn't know. Open a GitHub issue when a hand edit is needed.
 
+### Evidence of individual positions beyond roll calls
+
+Voice votes don't record individual members. These sources come closest, and are collected for each petition:
+
+| Source | What it shows | Coverage |
+|---|---|---|
+| Committee votes (API, in the bill record) | Each committee member's vote on reporting the bill | Published from 2025 on |
+| House roll-call PDFs (`/Journal/House/{court}/RollCalls/`) | Member-by-member House roll calls; the API doesn't serve these | 2015 on |
+| House and Senate Journals (daily PDFs) | Official account of each floor action; whether it was an informal session (one objection blocks); doubted votes, objections, member statements | 2015 on |
+| Session video (Sessions API) | Archived video of each session where the bill was acted on | 2015 on |
+| City Council meeting page (Legistar) | Meeting video, agenda and minutes | 2021 on |
+| Cosponsors (API) | Delegation members who signed on | All years |
+| News: CommonWealth Beacon, Dorchester Reporter (WordPress search APIs) | Coverage naming the petition; flag when it mentions an objection | Free sources only; paywalled sites and sites blocking automation are excluded |
+
+- R24. Show these on each petition, and per member in the Delegation tab (cosponsorships, committee votes, floor roll calls).
+
 ### Categories
 
 - R22. Sort every petition (and council docket) into a category by title. Routine categories are age waivers (54 of 182) and pensions or benefits for individuals (18). They get a standard summary filled in from the title instead of a Claude summary, which leaves about 100 petitions for Claude.

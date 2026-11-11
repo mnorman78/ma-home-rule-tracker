@@ -17,6 +17,7 @@ LABELS = {
     "update": ("0E8A16", "Daily petition updates"),
     "session-report": ("B60205", "Petitions that died when a session ended"),
     "test": ("C5DEF5", "Test notifications"),
+    "credentials": ("D93F0B", "Claude API sign-in problems"),
 }
 
 
@@ -41,6 +42,13 @@ def main(argv=None) -> int:
         color, desc = LABELS.get(label, ("BFD4F2", ""))
         gh("label", "create", label, "--color", color, "--description", desc, "--force", dry_run=args.dry_run)
     for n in notes:
+        # Some alerts (like a failed sign-in) would otherwise repeat every day: skip while one is still open.
+        if n.get("dedupe") and not args.dry_run:
+            open_ = subprocess.run(["gh", "issue", "list", "--state", "open", "--label", n["labels"][0],
+                                    "--json", "number", "--jq", "length"], capture_output=True, text=True)
+            if open_.stdout.strip() not in ("", "0"):
+                print(f"Skipping \"{n['title']}\": an open issue already covers it.")
+                continue
         with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as f:
             f.write(n["body"])
         gh("issue", "create", "--title", n["title"], "--label", ",".join(n["labels"]), "--body-file", f.name,

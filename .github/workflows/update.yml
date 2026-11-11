@@ -47,10 +47,47 @@ jobs:
 
       - run: uv sync --frozen
 
+      # Claude API sign-in. Preferred: Workload Identity Federation, with no stored key. GitHub issues this job
+      # an identity token, and the Anthropic SDK exchanges it for a short-lived access token. It's on when the
+      # ANTHROPIC_* repository variables below are set. Otherwise the ANTHROPIC_API_KEY secret is used, and
+      # with neither, summaries fall back to the Legislature's own descriptions.
+      - name: Fetch GitHub identity token for the Claude API
+        if: vars.ANTHROPIC_FEDERATION_RULE_ID != ''
+        run: |
+          curl -fsS -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com" \
+            | jq -r .value > "$RUNNER_TEMP/gha-jwt"
+
       - name: Run tracker
-        run: uv run tracker.py
+        run: |
+          # Empty variables would still count as "set" to the SDK, so remove the ones that are blank.
+          for v in ANTHROPIC_FEDERATION_RULE_ID ANTHROPIC_ORGANIZATION_ID ANTHROPIC_SERVICE_ACCOUNT_ID ANTHROPIC_WORKSPACE_ID ANTHROPIC_API_KEY; do
+            [ -n "${!v}" ] || unset "$v"
+          done
+          if [ -n "$ANTHROPIC_FEDERATION_RULE_ID" ]; then
+            # An API key outranks federation in the SDK, so drop it.
+            unset ANTHROPIC_API_KEY
+            export ANTHROPIC_IDENTITY_TOKEN_FILE="$RUNNER_TEMP/gha-jwt"
+            # Anthropic access tokens last 10 minutes and each GitHub identity token can be exchanged once,
+            # so keep a fresh identity token in the file; the SDK re-reads it when it renews.
+            ( while sleep 240; do
+                curl -fsS -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+                  "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com" \
+                  | jq -r .value > "$RUNNER_TEMP/gha-jwt.new" && mv "$RUNNER_TEMP/gha-jwt.new" "$RUNNER_TEMP/gha-jwt"
+              done ) &
+            echo "Claude API: keyless sign-in (Workload Identity Federation)"
+          elif [ -n "$ANTHROPIC_API_KEY" ]; then
+            echo "Claude API: API key secret"
+          else
+            unset ANTHROPIC_API_KEY
+            echo "Claude API: no credentials; summaries use the Legislature's descriptions"
+          fi
+          uv run tracker.py
         env:
-          # Optional: without this secret, summaries fall back to the Legislature's descriptions.
+          ANTHROPIC_FEDERATION_RULE_ID: ${{ vars.ANTHROPIC_FEDERATION_RULE_ID }}
+          ANTHROPIC_ORGANIZATION_ID: ${{ vars.ANTHROPIC_ORGANIZATION_ID }}
+          ANTHROPIC_SERVICE_ACCOUNT_ID: ${{ vars.ANTHROPIC_SERVICE_ACCOUNT_ID }}
+          ANTHROPIC_WORKSPACE_ID: ${{ vars.ANTHROPIC_WORKSPACE_ID }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
           NOTIFY_MENTION: "@${{ github.repository_owner }}"

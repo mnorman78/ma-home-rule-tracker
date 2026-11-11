@@ -44,6 +44,7 @@ class Summarizer:
         self.client = None
         self.generated = 0
         self.failed: list[str] = []
+        self.auth_error: str | None = None  # set when the API rejected our credentials
         if enabled:
             self.client = self._make_client()
 
@@ -128,6 +129,9 @@ class Summarizer:
                 # With no credentials at all, the SDK raises TypeError while building the request.
                 if not stop.is_set():
                     print(f"Summaries stopped: {type(e).__name__}. Set ANTHROPIC_API_KEY (or run `ant auth login`).", file=sys.stderr)
+                    # A missing credential (TypeError) is expected locally; a rejected one means it expired or was revoked.
+                    if not isinstance(e, TypeError):
+                        self.auth_error = f"{type(e).__name__}: {e}"[:300]
                 stop.set()
                 return
             except (anthropic.APIError, json.JSONDecodeError, KeyError) as e:

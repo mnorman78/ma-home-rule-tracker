@@ -321,6 +321,9 @@ def council_record(lg: Legistar, matter: dict, roster: Roster) -> dict:
             event = lg.get(f"/events/{passed['MatterHistoryEventId']}", permanent=True)
             url = event.get("EventMinutesFile")
             rec["minutes"] = url.replace("http://", "https://") if url else None
+            # The meeting page carries the video (when published), agenda and minutes.
+            rec["meeting_url"] = event.get("EventInSiteURL")
+            rec["has_video"] = bool(event.get("EventMedia") or event.get("EventVideoPath"))
             text = lg.minutes_text(url) if url else None
         except RuntimeError:  # meeting record or minutes file missing from Legistar
             text = None

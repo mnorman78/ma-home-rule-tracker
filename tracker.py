@@ -31,7 +31,9 @@ from hrt.council import Legistar, Roster, council_petitions
 from hrt.delegation import all_members, delegation, load_rules
 from hrt.elections import alerts_markdown, calendar, check_council_roster, check_delegation as check_delegation_changes
 from hrt.matching import load_overrides
+from hrt.news import News, attach_news
 from hrt.notify import build_notifications
+from hrt.records import Fetcher, Journals
 from hrt.pipeline import COUNCIL_FROM, attach_council, build
 from hrt.report import render
 from hrt.summaries import Summarizer
@@ -87,6 +89,8 @@ def main(argv=None) -> int:
     ap.add_argument("--until", type=int, default=None, help="last General Court to include (default: current)")
     ap.add_argument("--no-summaries", action="store_true", help="don't call the Claude API")
     ap.add_argument("--offline", action="store_true", help="use only cached API responses")
+    ap.add_argument("--no-records", action="store_true",
+                    help="skip Journals, House roll-call PDFs, session video and news (faster)")
     ap.add_argument("--check-elections", action="store_true", help="check for delegation and council roster changes")
     ap.add_argument("--check-delegation", action="store_true", help="list who delegation.json selects")
     ap.add_argument("--out", type=Path, default=ROOT / "output")
@@ -110,7 +114,8 @@ def main(argv=None) -> int:
 
     summarizer = Summarizer(ROOT / "data" / "summaries.json", enabled=not args.no_summaries)
     print(f"Building {args.city} home rule petitions, {court_years(since)} to {court_years(until)}…", file=sys.stderr)
-    dataset = build(client, args.city, courts, rules, summarizer)
+    journals = None if args.no_records else Journals(Fetcher(ROOT / "cache", client.live_court, offline=args.offline))
+    dataset = build(client, args.city, courts, rules, summarizer, journals)
 
     if args.city == "Boston":
         print(f"Reading City Council dockets and minutes since {COUNCIL_FROM}…", file=sys.stderr)
@@ -122,6 +127,14 @@ def main(argv=None) -> int:
         for p in dataset["petitions"]:
             p["council"] = None
 
+    if not args.no_records:
+        print("Searching free news coverage (CommonWealth Beacon, Dorchester Reporter)…", file=sys.stderr)
+        n = attach_news(dataset, News(ROOT / "cache", offline=args.offline), ROUTINE)
+        print(f"  {n} petitions with news coverage", file=sys.stderr)
+    else:
+        for p in dataset["petitions"]:
+            p["news"] = []
+
     counts = Counter(p.get("category") for p in dataset["petitions"])
     dataset["categories"] = [{"key": k, "label": label, "routine": k in ROUTINE, "count": counts[k]}
                              for k, label in LABELS.items() if counts[k]]
@@ -131,7 +144,8 @@ def main(argv=None) -> int:
     dataset["changes"] = changelog[:200]
     dataset["calendar"] = calendar()
     notifications = build_notifications(previous, dataset, events, site=os.environ.get("SITE_URL"),
-                                        mention=os.environ.get("NOTIFY_MENTION"), today=dt.date.today().isoformat())
+                                        mention=os.environ.get("NOTIFY_MENTION"), today=dt.date.today().isoformat(),
+                                        auth_error=summarizer.auth_error)
 
     args.out.mkdir(parents=True, exist_ok=True)
     (args.out / "notifications.json").write_text(json.dumps(notifications, indent=1, ensure_ascii=False))

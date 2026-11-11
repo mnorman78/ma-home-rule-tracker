@@ -112,5 +112,13 @@ class Client:
         return self.get(court, f"/GeneralCourts/{court}/LegislativeMembers/{code}",
                         transform=lambda d: {k: v for k, v in d.items() if k not in drop})
 
+    def committee_name(self, court: int, code: str) -> str:
+        try:
+            d = self.get(court, f"/GeneralCourts/{court}/Committees/{code}",
+                         transform=lambda d: {"FullName": d.get("FullName"), "ShortName": d.get("ShortName")})
+        except RuntimeError:
+            return code
+        return d.get("FullName") or code
+
     def roll_call(self, court: int, branch: str, number: int) -> dict:
         return self.get(court, f"/GeneralCourts/{court}/Branches/{branch}/RollCalls/{number}")

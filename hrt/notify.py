@@ -124,9 +124,29 @@ def session_issue(dataset: dict, court: int, site: str | None, mention: str | No
     }
 
 
+def credentials_issue(error: str, mention: str | None) -> dict:
+    """Raised when the Claude API rejects the tracker's credentials (an expired or revoked key, or a changed federation rule)."""
+    return {
+        "title": "Claude API sign-in failed: new petitions aren't getting summaries",
+        "body": (f"{mention + ' ' if mention else ''}The daily update couldn't sign in to the Claude API, so new petitions "
+                 "fall back to the Legislature's one-line descriptions. Everything else kept working.\n\n"
+                 f"Error: `{error}`\n\n"
+                 "To fix:\n"
+                 "- **Using an API key:** create a new key at platform.claude.com/settings/keys and update the "
+                 "`ANTHROPIC_API_KEY` repository secret.\n"
+                 "- **Better, no key to expire:** set up Workload Identity Federation (see the README's Automation section).\n\n"
+                 "Summaries that were missed are written on the next successful run. Close this issue once it's fixed; "
+                 "it won't be reopened while it stays open.\n"),
+        "labels": ["credentials"],
+        "dedupe": True,
+    }
+
+
 def build_notifications(old: dict | None, new: dict, events: list[dict], site: str | None,
-                        mention: str | None, today: str) -> list[dict]:
+                        mention: str | None, today: str, auth_error: str | None = None) -> list[dict]:
     out = []
+    if auth_error:
+        out.append(credentials_issue(auth_error, mention))
     daily = daily_issue(events, site, mention, today)
     if daily:
         out.append(daily)

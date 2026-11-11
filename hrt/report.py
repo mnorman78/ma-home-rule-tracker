@@ -71,6 +71,9 @@ th { color:var(--muted); font-weight:500; font-size:12px; text-transform:upperca
 .num { white-space:nowrap; font-variant-numeric:tabular-nums; }
 .cat { color:var(--accent); }
 .note { color:var(--muted); font-size:13px; }
+details.sub > summary { cursor:pointer; color:var(--accent); font-size:14px; }
+ul.journal { margin:6px 0 0; padding-left:18px; display:grid; gap:8px; font-size:13px; }
+.excerpt { color:var(--muted); }
 .foot { color:var(--muted); font-size:13px; margin-top:24px; max-width:760px; }
 @media (max-width:640px) {
   details.p > summary { grid-template-columns:1fr; }
@@ -121,8 +124,8 @@ th { color:var(--muted); font-weight:500; font-size:12px; text-transform:upperca
 
 <section id="delegation" hidden>
   <div class="row" id="dsessions"></div>
-  <p class="note">Members whose district includes part of Boston. "Transmitted" counts the petitions they filed at the State House. Recorded votes exist only where a petition got a roll call; almost all pass or die on voice votes, which don't record individual members.</p>
-  <div class="wrap"><table><thead><tr><th>Member</th><th>District</th><th>Transmitted</th><th>Became law</th><th>Recorded votes</th></tr></thead><tbody id="dtable"></tbody></table></div>
+  <p class="note">Members whose district includes part of Boston. "Transmitted" counts the petitions they filed at the State House; "Cosponsored" counts petitions they signed on to. Committee votes cover members who sit on the committee that reported a petition (published from 2025 on). Floor roll calls exist only for the few petitions that got one; almost all pass or die on voice votes, which don't record individual members. Each petition's Journal entries show whether it passed in an informal session, where any one member could have blocked it.</p>
+  <div class="wrap"><table><thead><tr><th>Member</th><th>District</th><th>Transmitted</th><th>Became law</th><th>Cosponsored</th><th>Committee votes</th><th>Floor roll calls</th></tr></thead><tbody id="dtable"></tbody></table></div>
 </section>
 
 <p class="foot">State data from the Massachusetts Legislature (malegislature.gov); City Council data from the Council's Legistar records and the City Clerk's minutes (2021 onward), linked to state bills by title and date. A home rule petition here is a bill filed "with the approval of the mayor and city council." Stages are read from each bill's history. When a petition was replaced by a new draft, its status follows the new bill. Summaries marked ✦ were written by Claude from the bill text. Age waivers and individual pensions get a standard summary filled in from the title; anything else unmarked is the Legislature's own filing description.</p>
@@ -176,11 +179,54 @@ function floorHtml(p) {
 }
 
 function rollHtml(p) {
-  return (p.roll_calls || []).map(rc => `
-    <div><b>Senate roll call #${rc.number}</b> · ${rc.yeas} yea, ${rc.nays} nay, ${rc.absent} absent${rc.pdf ? ` · <a href="${esc(rc.pdf)}" target="_blank" rel="noopener">PDF</a>` : ''}
-    <table><thead><tr><th>Boston senator</th><th>District</th><th>Vote</th></tr></thead><tbody>
+  return (p.roll_calls || []).map(rc => {
+    const house = rc.branch === 'House';
+    const other = house ? `${rc.not_voting} not voting` : `${rc.absent} absent`;
+    return `<div><b>${house ? 'House' : 'Senate'} roll call #${rc.number}</b>${rc.question ? ` · ${esc(rc.question)}` : ''}${rc.date ? ` · ${esc(rc.date)}` : ''} · ${rc.yeas} yea, ${rc.nays} nay, ${other}${rc.pdf ? ` · <a href="${esc(rc.pdf)}" target="_blank" rel="noopener">PDF</a>` : ''}
+    <table><thead><tr><th>Boston ${house ? 'representative' : 'senator'}</th><th>District</th><th>Vote</th></tr></thead><tbody>
     ${rc.delegation.map(m => `<tr><td>${esc(m.name)}</td><td>${esc(m.district)}</td><td class="v-${esc(m.vote.split(' ')[0])}">${esc(m.vote)}</td></tr>`).join('')}
-    </tbody></table></div>`).join('');
+    </tbody></table></div>`;
+  }).join('');
+}
+
+function committeeHtml(p) {
+  return (p.committee_votes || []).map(cv => {
+    const counts = Object.entries(cv.counts).filter(([, n]) => n).map(([k, n]) => `${n} ${k.toLowerCase()}`).join(', ');
+    const rows = cv.delegation.length
+      ? `<table><thead><tr><th>Boston member on the committee</th><th>Vote</th></tr></thead><tbody>${cv.delegation.map(m =>
+          `<tr><td>${esc(m.name)} <span class="note">${esc(m.district || '')}</span></td><td class="v-${m.vote === 'Favorable' ? 'Yea' : m.vote === 'Adverse' ? 'Nay' : 'Absent'}">${esc(m.vote)}</td></tr>`).join('')}</tbody></table>`
+      : '<p class="note">No Boston delegation members on this committee.</p>';
+    return `<div><b>Committee vote</b> · ${esc(cv.committee)} · ${esc(cv.question || '')} · ${esc(cv.date)}${cv.bill && cv.bill !== p.bill ? ` (on ${esc(cv.bill)})` : ''}<br><span class="note">${esc(counts)}</span>${rows}</div>`;
+  }).join('');
+}
+
+function positionsHtml(p) {
+  const co = p.cosponsors || [];
+  return co.length ? `<div class="chamber"><b>Cosponsored by Boston delegation members</b><span>${co.map(m => `${esc(m.name)} (${m.branch === 'House' ? 'Rep.' : 'Sen.'}, ${esc(m.district)})`).join('; ')}</span></div>` : '';
+}
+
+function journalHtml(p) {
+  const js = p.journal || [];
+  const vids = Object.fromEntries((p.videos || []).map(v => [`${v.branch}|${v.date}`, v.url]));
+  if (!js.length && !(p.videos || []).length) return '';
+  const items = js.map(j => {
+    const vid = vids[`${j.branch}|${j.date}`];
+    const tags = [j.informal ? 'informal session: any member could have objected' : 'formal session'].concat(j.flags);
+    return `<li><b>${esc(j.branch)} · ${esc(j.date)}</b> <span class="note">${tags.map(esc).join(' · ')}</span><br>
+      <span class="excerpt">${esc(j.excerpt)}</span><br>
+      <a href="${esc(j.url)}" target="_blank" rel="noopener">Journal PDF</a>${vid ? ` · <a href="${esc(vid)}" target="_blank" rel="noopener">session video</a>` : ''}</li>`;
+  });
+  const covered = new Set(js.map(j => `${j.branch}|${j.date}`));
+  const extraVids = (p.videos || []).filter(v => !covered.has(`${v.branch}|${v.date}`))
+    .map(v => `<li><b>${esc(v.branch)} · ${esc(v.date)}</b> · <a href="${esc(v.url)}" target="_blank" rel="noopener">session video</a></li>`);
+  return `<details class="sub"><summary>Journal entries and session video (${js.length + extraVids.length})</summary><ul class="journal">${items.concat(extraVids).join('')}</ul></details>`;
+}
+
+function newsHtml(p) {
+  const ns = p.news || [];
+  if (!ns.length) return '';
+  return `<div><b>News coverage</b> <span class="note">(free sources: CommonWealth Beacon, Dorchester Reporter)</span><ul class="journal">${ns.map(a =>
+    `<li><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a> <span class="note">${esc(a.source)}, ${esc(a.date)}${a.mentions_objection ? ' · mentions an objection' : ''}</span></li>`).join('')}</ul></div>`;
 }
 
 const VORDER = ['Nay', 'Yea', 'Present', 'Absent', 'Not present'];
@@ -207,14 +253,14 @@ function councilHtml(p) {
   }
   const how = c.match.method === 'manual' ? 'linked by hand' : `matched by title, score ${c.match.score}`;
   return `<div><div class="chamber"><b>City Council · <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.docket)}</a></b>
-    <span>${c.passed ? `Passed ${esc(c.passed)}` : 'Not passed'} · ${esc(voteLine(c.vote))}${c.minutes ? ` · <a href="${esc(c.minutes)}" target="_blank" rel="noopener">minutes</a>` : ''}<br><span class="note">${how}</span></span></div>
+    <span>${c.passed ? `Passed ${esc(c.passed)}` : 'Not passed'} · ${esc(voteLine(c.vote))}${c.minutes ? ` · <a href="${esc(c.minutes)}" target="_blank" rel="noopener">minutes</a>` : ''}${c.meeting_url ? ` · <a href="${esc(c.meeting_url)}" target="_blank" rel="noopener">meeting${c.has_video ? ' video' : ' page'}</a>` : ''}<br><span class="note">${how}</span></span></div>
     ${councilGrid(c.vote)}</div>`;
 }
 
 function houseRollNote(p) {
   const h = p.floor && p.floor.House;
-  if (!h || !h.roll_calls.length) return '';
-  return `<p class="note">House roll-call votes by member aren't published through the Legislature's API; they appear in the House Journal for that date.</p>`;
+  if (!h || !h.roll_calls.length || (p.roll_calls || []).some(rc => rc.branch === 'House')) return '';
+  return `<p class="note">The House roll call for this bill couldn't be matched in that day's roll-call PDF; see the House Journal for that date.</p>`;
 }
 
 function card(p) {
@@ -240,7 +286,7 @@ function card(p) {
       <dt>Committee</dt><dd>${esc(p.committee || '—')}</dd>
       <dt>Latest action</dt><dd>${esc(p.last_action || '—')}${p.last_action_date ? ` <span class="note">(${esc(p.last_action_date)}, ${esc(p.last_action_branch)})</span>` : ''}</dd>
     </dl>
-    ${councilHtml(p)}${floorHtml(p)}${rollHtml(p)}${houseRollNote(p)}
+    ${councilHtml(p)}${positionsHtml(p)}${committeeHtml(p)}${floorHtml(p)}${rollHtml(p)}${houseRollNote(p)}${journalHtml(p)}${newsHtml(p)}
   </div>
 </details>`;
 }
@@ -274,12 +320,17 @@ function renderDelegation() {
   $('#dtable').innerHTML = sel.delegation.map(m => {
     const mine = ps.filter(p => p.transmitter && p.transmitter.code === m.code);
     const laws = mine.filter(p => p.status === 'Became law').length;
-    const votes = [];
+    const votes = [], cvotes = [];
     ps.forEach(p => (p.roll_calls || []).forEach(rc => rc.delegation.forEach(v => {
       if (v.code === m.code) votes.push(`<span class="v-${esc(v.vote.split(' ')[0])}">${esc(v.vote)}</span> on ${esc(p.bill)}`);
     })));
+    ps.forEach(p => (p.committee_votes || []).forEach(cv => cv.delegation.forEach(v => {
+      if (v.code === m.code) cvotes.push(`<span class="v-${v.vote === 'Favorable' ? 'Yea' : v.vote === 'Adverse' ? 'Nay' : 'Absent'}">${esc(v.vote)}</span> on ${esc(p.bill)}`);
+    })));
+    const cosp = ps.filter(p => (p.cosponsors || []).some(c => c.code === m.code)).length;
     return `<tr><td>${esc(m.name)}<div class="note">${m.branch === 'House' ? 'Representative' : 'Senator'} · ${esc(m.party || '')}</div></td><td>${esc(m.district)}</td>
-      <td>${mine.length ? `<a href="#" data-who="${esc(m.name)}" data-c="${dCourt}">${mine.length}</a>` : '0'}</td><td>${laws}</td><td>${votes.join('<br>') || '<span class="note">none</span>'}</td></tr>`;
+      <td>${mine.length ? `<a href="#" data-who="${esc(m.name)}" data-c="${dCourt}">${mine.length}</a>` : '0'}</td><td>${laws}</td><td>${cosp}</td>
+      <td>${cvotes.join('<br>') || '<span class="note">none</span>'}</td><td>${votes.join('<br>') || '<span class="note">none</span>'}</td></tr>`;
   }).join('');
   $('#dtable').querySelectorAll('a[data-who]').forEach(a => a.onclick = e => {
     e.preventDefault(); state.who = a.dataset.who; state.court = +a.dataset.c; state.status = null;
